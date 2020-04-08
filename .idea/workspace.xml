@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="voting:war exploded" />
+    </artifacts-to-build>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4d9e0815-ff75-47cc-947c-c49286526986" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/repository/DataJpaUserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/repository/DataJpaUserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/web/user/AbstractUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/web/user/AbstractUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/web/user/AdminRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/gimadiew/voting/web/user/AdminRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+        <item name="DISH: table" type="a936b57e:HsqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+        <item name="RESTAURANT: table" type="a936b57e:HsqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+        <item name="USER: table" type="a936b57e:HsqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+        <item name="USER_ROLE: table" type="a936b57e:HsqlImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="voting" type="feb32156:DbDataSourceImpl" />
+        <item name="PUBLIC: database" type="5208c322:HsqlImplModel$Database" />
+        <item name="PUBLIC: schema" type="d266ad14:HsqlImplModel$Schema" />
+        <item name="VOTE: table" type="a936b57e:HsqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="f42ec55da664fc096dfefc118b4670dabe38c1f9" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1a8Tg927GYNXGz6OWDT6eILClxK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="hsqldb" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="spring" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\java\graduation\src\main\webapp\WEB-INF" />
+      <recent name="C:\java\graduation\src\main\java\ru\gimadiew\voting\web" />
+      <recent name="C:\java\graduation\src\main\resources" />
+      <recent name="C:\java\graduation\src\main\resources\db" />
+      <recent name="C:\java\graduation\src\main\java\ru\gimadiew\voting\web\user" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.gimadiew.voting.util" />
+      <recent name="ru.gimadiew.voting.web.converter" />
+      <recent name="ru.gimadiew.voting.repository" />
+      <recent name="ru.gimadiew.voting.util.exception" />
+      <recent name="ru.gimadiew.voting.model.web" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="ru.gimadiew.voting.model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Tomcat Server.Tomcat">
+    <configuration name="voting [clean]" type="MavenRunConfiguration" factoryName="Maven" temporary="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+              </list>
+            </option>
+            <option name="pomFileName" value="pom.xml" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="Tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.30" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="BROWSER_ID" value="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" />
+      <option name="UPDATING_POLICY" value="restart-server" />
+      <deployment>
+        <artifact name="voting:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/voting" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_voting_5" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="51680" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="voting:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.Tomcat" />
+      <item itemvalue="Maven.voting [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Maven.voting [clean]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.13910356" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Tomcat Server" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Running" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SpringGeneralSettings">
+    <option name="showMultipleContextsPanel" value="false" />
+    <option name="showProfilesPanel" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4d9e0815-ff75-47cc-947c-c49286526986" name="Default Changelist" comment="" />
+      <created>1586116330342</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586116330342</updated>
+      <workItem from="1586116338842" duration="25799000" />
+      <workItem from="1586262467696" duration="27804000" />
+      <workItem from="1586351571347" duration="4314000" />
+    </task>
+    <task id="LOCAL-00001" summary="AdminRestController ready">
+      <created>1586353822357</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586353822357</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="AdminRestController ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="AdminRestController ready" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#Assign_Data_Sources" timestamp="1586276278945">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#Assign_Data_Sources/0.0.1366.728@0.0.1366.728" timestamp="1586276278945" />
+    <state x="275" y="22" key="#Notifications" timestamp="1586263744207">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#Notifications/0.0.1366.728@0.0.1366.728" timestamp="1586263744207" />
+    <state x="275" y="22" key="#SQL_Dialects" timestamp="1586189333281">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#SQL_Dialects/0.0.1366.728@0.0.1366.728" timestamp="1586189333281" />
+    <state x="274" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1586355520645">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="274" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1586355520645" />
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser" timestamp="1586189219450">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="48" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1586189219450" />
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1586353815684">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1586353815684" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1586340434648">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1586340434648" />
+    <state width="1113" height="360" key="GridCell.Tab.0.bottom" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.0.center" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.0.left" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.0.right" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.1.bottom" timestamp="1586356145140">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586356145140" />
+    <state width="1113" height="360" key="GridCell.Tab.1.center" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.1.left" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.1.right" timestamp="1586356145139">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1586356145139" />
+    <state width="1113" height="360" key="GridCell.Tab.2.bottom" timestamp="1586356145140">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.2.bottom/0.0.1366.728@0.0.1366.728" timestamp="1586356145140" />
+    <state width="1113" height="360" key="GridCell.Tab.2.center" timestamp="1586356145140">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.2.center/0.0.1366.728@0.0.1366.728" timestamp="1586356145140" />
+    <state width="1113" height="360" key="GridCell.Tab.2.left" timestamp="1586356145140">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.2.left/0.0.1366.728@0.0.1366.728" timestamp="1586356145140" />
+    <state width="1113" height="360" key="GridCell.Tab.2.right" timestamp="1586356145140">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1113" height="360" key="GridCell.Tab.2.right/0.0.1366.728@0.0.1366.728" timestamp="1586356145140" />
+    <state x="528" y="75" key="RollbackChangesDialog" timestamp="1586339410285">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="528" y="75" key="RollbackChangesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586339410285" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1586338367072">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1586338367072" />
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog" timestamp="1586354055432">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="com.intellij.dvcs.ui.CompareBranchesDialog/0.0.1366.728@0.0.1366.728" timestamp="1586354055432" />
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog" timestamp="1586262499355">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="379" y="188" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1586262499355" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1586353793888">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1586353793888" />
+    <state x="363" y="47" key="spring file set editor" timestamp="1586261016373">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="363" y="47" key="spring file set editor/0.0.1366.728@0.0.1366.728" timestamp="1586261016373" />
+  </component>
+</project>
