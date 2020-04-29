@@ -19,18 +19,18 @@ INSERT INTO RESTAURANT (NAME) VALUES
     ('Прага'),
     ('Москва'),
     ('Казань');
-
-INSERT INTO DISH (description, price, rest_id) VALUES
-    ('Салат', 15000, 100003),
-    ('Чай', 5000, 100003),
-    ('Суп', 20000, 100004),
-    ('Цыпленок табака', 25000, 100004),
-    ('Капучино', 7000, 100004),
-    ('Чак-чак', 23000, 100005),
-    ('Чай с молоком', 6000, 100005);
-INSERT INTO DISH (DATE, DESCRIPTION, PRICE, REST_ID) VALUES
-    ('2020-04-06', 'Торт', 15000, 100003),
-    ('2020-04-05', 'Треугольник', 3300, 100005);
+-- INSERT INTO DISH (description, price, rest_id, date) VALUES ('Салат пробный', 15000, 100003, TODAY);
+INSERT INTO DISH (description, price, rest_id, date_time) VALUES
+    ('Салат', 15000, 100003, TODAY),
+    ('Чай', 5000, 100003, TODAY),
+    ('Суп', 20000, 100004, TODAY),
+    ('Цыпленок табака', 25000, 100004, TODAY),
+    ('Капучино', 7000, 100004, TODAY),
+    ('Чак-чак', 23000, 100005, TODAY),
+    ('Чай с молоком', 6000, 100005, TODAY);
+INSERT INTO DISH (description, price, rest_id, date_time) VALUES
+    ('Торт', 15000, 100003, '2020-04-06'),
+    ('Треугольник', 3300, 100005, '2020-04-05');
 
 INSERT INTO VOTE (USER_ID, REST_ID) VALUES
     (100000, 100003),

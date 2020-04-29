@@ -1,5 +1,6 @@
 package ru.gimadiew.voting.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
@@ -17,17 +18,18 @@ public class Restaurant extends AbstractNamedEntity {
     private String name;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private List<Dish> dishes;
+    @JsonManagedReference
+    private List<Dish> menu;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     private List<Vote> votes;
 
-    public List<Dish> getDishes() {
-        return dishes;
+    public List<Dish> getMenu() {
+        return menu;
     }
 
-    public void setDishes(Collection<Dish> dishes) {
-        this.dishes = CollectionUtils.isEmpty(dishes) ? Collections.emptyList() : new ArrayList<>(dishes);
+    public void setMenu(Collection<Dish> dishes) {
+        this.menu = CollectionUtils.isEmpty(dishes) ? Collections.emptyList() : new ArrayList<>(dishes);
     }
 
     public List<Vote> getVotes() {

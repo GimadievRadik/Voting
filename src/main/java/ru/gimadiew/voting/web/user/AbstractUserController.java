@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import ru.gimadiew.voting.model.User;
 import ru.gimadiew.voting.repository.DataJpaUserRepository;
-import ru.gimadiew.voting.repository.UserRepository;
 
 import java.util.List;
 
