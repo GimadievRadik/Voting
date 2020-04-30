@@ -22,7 +22,7 @@ public class Restaurant extends AbstractNamedEntity {
     private List<Dish> menu;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
-    private List<Vote> votes;
+    private Set<Vote> votes;
 
     public List<Dish> getMenu() {
         return menu;
@@ -32,11 +32,11 @@ public class Restaurant extends AbstractNamedEntity {
         this.menu = CollectionUtils.isEmpty(dishes) ? Collections.emptyList() : new ArrayList<>(dishes);
     }
 
-    public List<Vote> getVotes() {
+    public Set<Vote> getVotes() {
         return votes;
     }
 
     public void setVotes(List<Vote> votes) {
-        this.votes = votes;
+        this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
     }
 }

@@ -7,6 +7,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Table(name = "VOTE", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "date_time"}, name = "vote_unique_user_date_idx")})
@@ -61,5 +62,20 @@ public class Vote extends AbstractBaseEntity {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vote vote = (Vote) o;
+        return votingDateTime.equals(vote.votingDateTime) &&
+                user.equals(vote.user) &&
+                restaurant.equals(vote.restaurant);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(votingDateTime, user, restaurant);
     }
 }
