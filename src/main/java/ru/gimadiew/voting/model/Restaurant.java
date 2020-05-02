@@ -19,17 +19,17 @@ public class Restaurant extends AbstractNamedEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     @JsonManagedReference
-    private List<Dish> menu;
+    private Set<Dish> menu;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "restaurant")
     private Set<Vote> votes;
 
-    public List<Dish> getMenu() {
+    public Set<Dish> getMenu() {
         return menu;
     }
 
     public void setMenu(Collection<Dish> dishes) {
-        this.menu = CollectionUtils.isEmpty(dishes) ? Collections.emptyList() : new ArrayList<>(dishes);
+        this.menu = CollectionUtils.isEmpty(dishes) ? Collections.emptySet() : new HashSet<>(dishes);
     }
 
     public Set<Vote> getVotes() {

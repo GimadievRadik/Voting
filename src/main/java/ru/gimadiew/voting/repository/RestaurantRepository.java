@@ -24,12 +24,7 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
     @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.dateTime = ?1")
     List<Restaurant> findAll(LocalDateTime dateTime);
 
-//    @EntityGraph(attributePaths = {"votes"}, type = EntityGraph.EntityGraphType.LOAD)
-//    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m LEFT JOIN FETCH r.votes v WHERE m.dateTime = ?1")
-//    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.dateTime = ?1")
-    @EntityGraph(attributePaths = {"votes", "menu"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("SELECT r FROM Restaurant r")
+    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m LEFT JOIN FETCH r.votes v WHERE m.dateTime = ?1 AND (v.votingDateTime >= ?1 OR r.votes IS EMPTY )")
     List<Restaurant> findAllWithVotes(LocalDateTime dateTime);
-
 
 }
