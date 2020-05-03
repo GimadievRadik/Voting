@@ -39,4 +39,12 @@ public class Restaurant extends AbstractNamedEntity {
     public void setVotes(List<Vote> votes) {
         this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

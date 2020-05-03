@@ -1,6 +1,7 @@
 package ru.gimadiew.voting.model;
 
 import org.hibernate.annotations.BatchSize;
+import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -40,7 +41,7 @@ public class User extends AbstractNamedEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @OrderBy("votingDateTime DESC")
-    private List<Vote> votes;
+    private Set<Vote> votes;
 
     public User() {
     }
@@ -63,12 +64,7 @@ public class User extends AbstractNamedEntity {
     }
 
     public void setRoles(Collection<Role> roles) {
-//        this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
-        if (roles == null || roles.isEmpty()) {
-            this.roles = EnumSet.noneOf(Role.class);
-        } else {
-            this.roles = EnumSet.copyOf(roles);
-        }
+        this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 
     public String getEmail() {
@@ -101,5 +97,13 @@ public class User extends AbstractNamedEntity {
 
     public void setRegistered(Date registered) {
         this.registered = registered;
+    }
+
+    public Set<Vote> getVotes() {
+        return votes;
+    }
+
+    public void setVotes(Collection<Vote> votes) {
+        this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
     }
 }

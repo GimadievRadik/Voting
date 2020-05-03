@@ -10,7 +10,7 @@ import ru.gimadiew.voting.model.User;
 
 @Repository
 @Transactional(readOnly = true)
-public interface DataJpaUserRepository extends JpaRepository<User, Integer> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying

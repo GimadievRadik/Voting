@@ -1,14 +1,16 @@
 package ru.gimadiew.voting.web.converter;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.Formatter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import static ru.gimadiew.voting.util.DateTimeUtil.parseLocalDate;
-import static ru.gimadiew.voting.util.DateTimeUtil.parseLocalTime;
+import static ru.gimadiew.voting.util.DateTimeUtil.*;
 
 public class DateTimeFormatters {
     public static class LocalDateFormatter implements Formatter<LocalDate> {
@@ -19,8 +21,8 @@ public class DateTimeFormatters {
         }
 
         @Override
-        public String print(LocalDate lt, Locale locale) {
-            return lt.format(DateTimeFormatter.ISO_LOCAL_DATE);
+        public String print(LocalDate ld, Locale locale) {
+            return ld.format(DateTimeFormatter.ISO_LOCAL_DATE);
         }
     }
 
