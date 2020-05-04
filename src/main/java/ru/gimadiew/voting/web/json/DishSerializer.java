@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import ru.gimadiew.voting.model.Dish;
 
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 
 public class DishSerializer extends StdSerializer<Dish> {
 
@@ -23,6 +24,7 @@ public class DishSerializer extends StdSerializer<Dish> {
         jgen.writeStartObject();
         jgen.writeNumberField("id", dish.getId());
         jgen.writeStringField("description", dish.getDescription());
+        jgen.writeStringField("dateTime", dish.getDateTime().toLocalDate().format(DateTimeFormatter.ISO_LOCAL_DATE));
         jgen.writeNumberField("price", dish.getPrice() / 100.0);
         jgen.writeEndObject();
     }

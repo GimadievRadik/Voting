@@ -26,12 +26,11 @@ public class Dish extends AbstractBaseEntity {
 
     @Column(nullable = false)
     @NotNull
-    @JsonFormat(shape = JsonFormat.Shape.NUMBER_FLOAT, pattern = "%.2d")
     private Integer price;
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
-    @JsonIgnore
+    //@JsonIgnore need dish date in history
     private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -72,5 +71,13 @@ public class Dish extends AbstractBaseEntity {
 
     public void setPrice(Integer price) {
         this.price = price;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 }

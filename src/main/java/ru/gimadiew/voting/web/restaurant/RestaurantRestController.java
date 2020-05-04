@@ -2,10 +2,8 @@ package ru.gimadiew.voting.web.restaurant;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.Nullable;
+import org.springframework.web.bind.annotation.*;
 import ru.gimadiew.voting.model.Dish;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.Vote;
@@ -16,6 +14,7 @@ import ru.gimadiew.voting.repository.VoteRepository;
 import ru.gimadiew.voting.util.RestaurantUtil;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Comparator;
 import java.util.List;
 
@@ -48,6 +47,12 @@ public class RestaurantRestController {
     @GetMapping("/{id}/with-menu")
     public Restaurant getWithMenu(@PathVariable int id) {
         return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now().atStartOfDay()), id);
+    }
+
+    @GetMapping("/{id}/history")
+    public List<Dish> getDishesAfterDate(@PathVariable int id, @RequestParam @Nullable LocalDate date) {
+        LocalDateTime dateTime = date == null ? LocalDateTime.of(2000, 1, 1, 0, 0) : date.atStartOfDay();
+        return dishRepository.getMenu(id, dateTime);
     }
 
     @GetMapping

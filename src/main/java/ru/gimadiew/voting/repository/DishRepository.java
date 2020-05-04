@@ -14,6 +14,6 @@ import java.util.List;
 @Transactional
 public interface DishRepository extends JpaRepository<Dish, Integer> {
 
-    @Query("SELECT d FROM Dish d WHERE d.restaurant.id = ?1 AND d.dateTime = ?2")
+    @Query("SELECT d FROM Dish d WHERE d.restaurant.id = ?1 AND d.dateTime >= ?2")
     List<Dish> getMenu(int id, LocalDateTime dateTime);
 }
