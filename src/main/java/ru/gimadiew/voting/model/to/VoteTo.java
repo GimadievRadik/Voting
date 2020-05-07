@@ -1,16 +1,11 @@
 package ru.gimadiew.voting.model.to;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import java.beans.ConstructorProperties;
 import java.time.LocalDateTime;
 
 public class VoteTo extends BaseTo {
 
     private LocalDateTime votingDateTime;
 
-    @Size(min = 2, max = 100)
-    @NotBlank
     private String restaurantName;
 
     private Integer restaurantId;

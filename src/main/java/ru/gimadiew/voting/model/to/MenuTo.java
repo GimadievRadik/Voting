@@ -6,7 +6,6 @@ import java.util.List;
 public class MenuTo {
 
     @Valid
-//    @JsonProperty
     private List<DishTo> menu;
 
     public List<DishTo> getMenu() {

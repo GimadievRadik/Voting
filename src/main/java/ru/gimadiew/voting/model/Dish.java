@@ -7,13 +7,19 @@ import org.hibernate.annotations.OnDeleteAction;
 import ru.gimadiew.voting.web.json.DishSerializer;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.time.LocalDateTime;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "DISH", uniqueConstraints = {@UniqueConstraint(columnNames = {"rest_id", "description", "date_time"}, name = "dish_unique_rest_description_date_idx")})
+@Table(name = "DISH", uniqueConstraints = {@UniqueConstraint(columnNames = {"rest_id", "description", "DATE"}, name = "dish_unique_rest_description_date_idx")})
 @JsonSerialize(using = DishSerializer.class)
 public class Dish extends AbstractBaseEntity {
+
+    public static final Float CURRENCY_DIVIDER = 100.0f;
+    public static final Integer CURRENCY_MULTIPLIER = 100;
 
     @Column(nullable = false)
     @Size(min = 2, max = 100)
@@ -25,11 +31,8 @@ public class Dish extends AbstractBaseEntity {
     @PositiveOrZero
     private Integer price;
 
-    @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
-//    @NotNull
-////    @FutureOrPresent
-    //@JsonIgnore need dish date in history
-    private LocalDateTime dateTime;
+    @Column(name = "date", nullable = false, columnDefinition = "timestamp default now()")
+    private LocalDate date;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rest_id", nullable = false)
@@ -42,14 +45,14 @@ public class Dish extends AbstractBaseEntity {
     }
 
     public Dish(String description, Integer price) {
-        this(null, description, price, LocalDateTime.now());
+        this(null, description, price, LocalDate.now());
     }
 
-    public Dish(Integer id, String description, Integer price, LocalDateTime dateTime) {
+    public Dish(Integer id, String description, Integer price, LocalDate date) {
         super(id);
         this.description = description;
         this.price = price;
-        this.dateTime = dateTime;
+        this.date = date;
     }
 
     public Restaurant getRestaurant() {
@@ -76,12 +79,12 @@ public class Dish extends AbstractBaseEntity {
         this.price = price;
     }
 
-    public LocalDateTime getDateTime() {
-        return dateTime;
+    public LocalDate getDate() {
+        return date;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
-        this.dateTime = dateTime;
+    public void setDate(LocalDate date) {
+        this.date = date;
     }
 
     @Override
@@ -89,7 +92,7 @@ public class Dish extends AbstractBaseEntity {
         return "Dish{" +
                 "description='" + description + '\'' +
                 ", price=" + price +
-                ", dateTime=" + dateTime +
+                ", dateTime=" + date +
                 ", id=" + id +
                 '}';
     }

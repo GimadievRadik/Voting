@@ -38,7 +38,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.gimadiew.voting.util.ValidationUtil.*;
+import static ru.gimadiew.voting.util.ValidationUtil.assureIdConsistent;
+import static ru.gimadiew.voting.util.ValidationUtil.checkNotFoundWithId;
 
 @RestController
 @RequestMapping(value = RestaurantRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -67,26 +68,27 @@ public class RestaurantRestController {
     @GetMapping("/{id}/dishes")
     public List<Dish> getMenu(@PathVariable int id) {
         log.info("get menu for restaurant with id = {}", id);
-        return dishRepository.getMenu(id, LocalDate.now().atStartOfDay());
+        return dishRepository.getMenu(id, LocalDate.now());
     }
 
     @GetMapping("/{id}/with-menu")
     public Restaurant getWithMenu(@PathVariable int id) {
         log.info("get restaurant with menu, id = {}", id);
-        return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now().atStartOfDay()), id);
+//        return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now().atStartOfDay()), id);
+        return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now()), id);
     }
 
     @GetMapping("/{id}/dishes/history")
     public List<Dish> getDishesAfterDate(@PathVariable int id, @RequestParam @Nullable LocalDate date) {
-        LocalDateTime dateTime = date == null ? LocalDateTime.of(2000, 1, 1, 0, 0) : date.atStartOfDay();
-        log.info("get menus history for restaurant id = {} from date-time {}", id, dateTime);
-        return dishRepository.getMenu(id, dateTime);
+        LocalDate startDate = date == null ? LocalDate.of(2000, 1, 1) : date;
+        log.info("get menus history for restaurant id = {} from date {}", id, startDate);
+        return dishRepository.getMenu(id, startDate);
     }
 
     @GetMapping
     public List<Restaurant> getAllWithMenu() {
         log.info("get all restaurants menu");
-        return restaurantRepository.findAllWithMenu(LocalDate.now().atStartOfDay());
+        return restaurantRepository.findAllWithMenu(LocalDate.now());
     }
 
     @GetMapping("/votes")
@@ -129,7 +131,7 @@ public class RestaurantRestController {
         log.info("update dish, id = {}, restaurantId = {}", dishId, restaurantId);
         assureIdConsistent(dishTo, dishId);
         Dish dish = checkNotFoundWithId(dishRepository.findById(dishId).orElse(null), dishId);
-        dish = DishUtil.updateFromTo(dish, dishTo);
+        DishUtil.updateFromTo(dish, dishTo);
         saveDish(dish, restaurantId);
     }
 

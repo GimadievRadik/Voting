@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gimadiew.voting.model.Restaurant;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -15,11 +15,11 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     Restaurant findById(int id);
 
-    @Query("SELECT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE r.id = ?1 AND m.dateTime >= ?2")
-    Restaurant findWithMenu(int id, LocalDateTime dateTime);
+    @Query("SELECT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE r.id = ?1 AND m.date >= ?2")
+    Restaurant findWithMenu(int id, LocalDate date);
 
-    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.dateTime >= ?1 ORDER BY r.name")
-    List<Restaurant> findAllWithMenu(LocalDateTime dateTime);
+    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.date >= ?1 ORDER BY r.name")
+    List<Restaurant> findAllWithMenu(LocalDate date);
 
 
 }

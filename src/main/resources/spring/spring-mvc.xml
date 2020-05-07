@@ -26,14 +26,10 @@
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
         <property name="formatters">
             <set>
-                <bean class="ru.gimadiew.voting.web.converter.DateTimeFormatters.LocalTimeFormatter"/>
                 <bean class="ru.gimadiew.voting.web.converter.DateTimeFormatters.LocalDateFormatter"/>
             </set>
         </property>
     </bean>
 
     <context:component-scan base-package="ru.gimadiew.**.web"/>
-
-    <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
-<!--    <mvc:resources mapping="/resources/**" location="/resources/"/>-->
 </beans>

@@ -8,10 +8,11 @@ public class RestaurantTo extends BaseTo {
     @NotBlank
     @Size(min = 2, max = 50)
     private String name;
-    
+
     private Integer rating;
 
-    public RestaurantTo() {}
+    public RestaurantTo() {
+    }
 
     public RestaurantTo(Integer id, String name, Integer rating) {
         super(id);

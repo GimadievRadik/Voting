@@ -21,8 +21,7 @@ INSERT INTO RESTAURANT (NAME) VALUES
     ('Прага'),
     ('Москва'),
     ('Казань');
--- INSERT INTO DISH (description, price, rest_id, date) VALUES ('Салат пробный', 15000, 100003, TODAY);
-INSERT INTO DISH (description, price, rest_id, date_time) VALUES
+INSERT INTO DISH (description, price, rest_id, DATE) VALUES
     ('Салат', 15000, 100004, TODAY),
     ('Чай', 5000, 100004, TODAY),
     ('Суп', 20003, 100005, TODAY),
@@ -30,7 +29,7 @@ INSERT INTO DISH (description, price, rest_id, date_time) VALUES
     ('Капучино', 7000, 100005, TODAY),
     ('Чак-чак', 23001, 100006, TODAY),
     ('Чай с молоком', 6005, 100006, TODAY);
-INSERT INTO DISH (description, price, rest_id, date_time) VALUES
+INSERT INTO DISH (description, price, rest_id, DATE) VALUES
     ('Торт', 15000, 100004, '2020-04-06'),
     ('Треугольник', 3300, 100006, '2020-04-05');
 

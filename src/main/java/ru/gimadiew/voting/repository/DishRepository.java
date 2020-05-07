@@ -7,15 +7,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gimadiew.voting.model.Dish;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
 public interface DishRepository extends JpaRepository<Dish, Integer> {
 
-    @Query("SELECT d FROM Dish d WHERE d.restaurant.id = ?1 AND d.dateTime >= ?2 ORDER BY d.dateTime DESC")
-    List<Dish> getMenu(int id, LocalDateTime dateTime);
+    @Query("SELECT d FROM Dish d WHERE d.restaurant.id = ?1 AND d.date >= ?2 ORDER BY d.date DESC")
+    List<Dish> getMenu(int id, LocalDate date);
 
     @Modifying
     @Transactional
