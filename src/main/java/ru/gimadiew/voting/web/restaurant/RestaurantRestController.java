@@ -15,7 +15,7 @@ import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.User;
 import ru.gimadiew.voting.model.Vote;
 import ru.gimadiew.voting.model.to.DishTo;
-import ru.gimadiew.voting.model.to.Menu;
+import ru.gimadiew.voting.model.to.MenuTo;
 import ru.gimadiew.voting.model.to.RestaurantTo;
 import ru.gimadiew.voting.model.to.VoteTo;
 import ru.gimadiew.voting.repository.DishRepository;
@@ -34,12 +34,10 @@ import java.net.URI;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.gimadiew.voting.util.DishUtil.createFromTo;
 import static ru.gimadiew.voting.util.ValidationUtil.*;
 
 @RestController
@@ -112,9 +110,9 @@ public class RestaurantRestController {
     }
 
     @PostMapping(value = "/{id}/dishes", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Dish>> createMenu(@PathVariable int id, @Valid @RequestBody Menu menu) {
+    public ResponseEntity<List<Dish>> createMenu(@PathVariable int id, @Valid @RequestBody MenuTo menuTo) {
         log.info("create menu for restaurant id = {}", id);
-        List<Dish> created = menu.getDishTos().stream()
+        List<Dish> created = menuTo.getMenu().stream()
                 .peek(ValidationUtil::checkNew)
                 .map(DishUtil::createFromTo)
                 .map(d -> saveDish(d, id))
@@ -211,11 +209,11 @@ public class RestaurantRestController {
 
 
     @GetMapping("/testjson")
-    public Menu getMenu() {
+    public MenuTo getMenu() {
         DishTo dishTo1 = new DishTo("чак", 23.02f);
         DishTo dishTo2 = new DishTo("чак2", 46.07f);
-        Menu menu = new Menu();
-        menu.setDishTos(Arrays.asList(dishTo1, dishTo2));
-        return menu;
+        MenuTo menuTo = new MenuTo();
+        menuTo.setMenu(Arrays.asList(dishTo1, dishTo2));
+        return menuTo;
     }
 }
