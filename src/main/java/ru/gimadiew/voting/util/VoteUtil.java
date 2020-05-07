@@ -9,11 +9,11 @@ import java.util.stream.Collectors;
 public class VoteUtil {
 
     public static VoteTo asTo(Vote v) {
-        return new VoteTo(v.getId(), v.getVotingDateTime(), v.getRestaurant().getId(), v.getRestaurant().getName());
+        return new VoteTo(v.getId(), v.getRestaurant().getId(), v.getRestaurant().getName(), v.getVotingDateTime());
     }
 
     public static List<VoteTo> getTos(List<Vote> votes) {
         return votes.stream().map(VoteUtil::asTo).collect(Collectors.toList());
-
     }
+
 }

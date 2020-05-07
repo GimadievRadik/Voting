@@ -1,10 +1,8 @@
 package ru.gimadiew.voting.util;
 
 
-import ru.gimadiew.voting.model.AbstractBaseEntity;
+import ru.gimadiew.voting.HasId;
 import ru.gimadiew.voting.util.exception.NotFoundException;
-
-import java.util.Set;
 
 public class ValidationUtil {
 
@@ -31,13 +29,13 @@ public class ValidationUtil {
         }
     }
 
-    public static void checkNew(AbstractBaseEntity entity) {
+    public static void checkNew(HasId entity) {
         if (!entity.isNew()) {
             throw new IllegalArgumentException(entity + " must be new (id=null)");
         }
     }
 
-    public static void assureIdConsistent(AbstractBaseEntity entity, int id) {
+    public static void assureIdConsistent(HasId entity, int id) {
 //      conservative when you reply, but accept liberally (http://stackoverflow.com/a/32728226/548473)
         if (entity.isNew()) {
             entity.setId(id);

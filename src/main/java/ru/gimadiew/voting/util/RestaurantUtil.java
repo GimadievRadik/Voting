@@ -25,4 +25,5 @@ public class RestaurantUtil {
         Integer rating = (Optional.ofNullable(ratingMap.get(restaurant)).orElse(0L)).intValue();
         return new RestaurantTo(restaurant.getId(), restaurant.getName(), rating);
     }
+
 }

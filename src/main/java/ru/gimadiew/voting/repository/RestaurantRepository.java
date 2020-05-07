@@ -15,10 +15,11 @@ public interface RestaurantRepository extends JpaRepository<Restaurant, Integer>
 
     Restaurant findById(int id);
 
-    @Query("SELECT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE r.id = ?1 AND m.dateTime = ?2")
+    @Query("SELECT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE r.id = ?1 AND m.dateTime >= ?2")
     Restaurant findWithMenu(int id, LocalDateTime dateTime);
 
-    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.dateTime = ?1 ORDER BY r.name")
+    @Query("SELECT DISTINCT r FROM Restaurant r LEFT JOIN FETCH r.menu m WHERE m.dateTime >= ?1 ORDER BY r.name")
     List<Restaurant> findAllWithMenu(LocalDateTime dateTime);
+
 
 }

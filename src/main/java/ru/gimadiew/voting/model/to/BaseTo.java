@@ -1,6 +1,8 @@
 package ru.gimadiew.voting.model.to;
 
-public abstract class BaseTo {
+import ru.gimadiew.voting.HasId;
+
+public abstract class BaseTo implements HasId {
 
     protected Integer id;
 

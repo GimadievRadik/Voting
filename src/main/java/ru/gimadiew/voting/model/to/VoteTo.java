@@ -1,15 +1,16 @@
 package ru.gimadiew.voting.model.to;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import ru.gimadiew.voting.model.Vote;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.beans.ConstructorProperties;
 import java.time.LocalDateTime;
 
 public class VoteTo extends BaseTo {
 
-//    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private LocalDateTime votingDateTime;
 
+    @Size(min = 2, max = 100)
+    @NotBlank
     private String restaurantName;
 
     private Integer restaurantId;
@@ -17,7 +18,7 @@ public class VoteTo extends BaseTo {
     public VoteTo() {
     }
 
-    public VoteTo(Integer id, LocalDateTime votingDateTime, Integer restaurantId, String restaurantName) {
+    public VoteTo(Integer id, Integer restaurantId, String restaurantName, LocalDateTime votingDateTime) {
         super(id);
         this.votingDateTime = votingDateTime;
         this.restaurantId = restaurantId;

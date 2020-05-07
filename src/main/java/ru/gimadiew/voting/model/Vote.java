@@ -13,17 +13,19 @@ import java.time.LocalDateTime;
 public class Vote extends AbstractBaseEntity {
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
-    @NotNull
+//    @NotNull
     private LocalDateTime votingDateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
+    @JsonIgnore
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rest_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+    @NotNull
     @JsonIgnore
     private Restaurant restaurant;
 
@@ -61,5 +63,13 @@ public class Vote extends AbstractBaseEntity {
 
     public void setRestaurant(Restaurant restaurant) {
         this.restaurant = restaurant;
+    }
+
+    @Override
+    public String toString() {
+        return "Vote{" +
+                "votingDateTime=" + votingDateTime +
+                ", id=" + id +
+                '}';
     }
 }

@@ -1,17 +1,13 @@
 package ru.gimadiew.voting.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import ru.gimadiew.voting.web.json.DishSerializer;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -26,10 +22,12 @@ public class Dish extends AbstractBaseEntity {
 
     @Column(nullable = false)
     @NotNull
+    @PositiveOrZero
     private Integer price;
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
-    @NotNull
+//    @NotNull
+////    @FutureOrPresent
     //@JsonIgnore need dish date in history
     private LocalDateTime dateTime;
 
@@ -37,9 +35,14 @@ public class Dish extends AbstractBaseEntity {
     @JoinColumn(name = "rest_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonBackReference
+    @NotNull
     private Restaurant restaurant;
 
     public Dish() {
+    }
+
+    public Dish(String description, Integer price) {
+        this(null, description, price, LocalDateTime.now());
     }
 
     public Dish(Integer id, String description, Integer price, LocalDateTime dateTime) {
@@ -79,5 +82,15 @@ public class Dish extends AbstractBaseEntity {
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "description='" + description + '\'' +
+                ", price=" + price +
+                ", dateTime=" + dateTime +
+                ", id=" + id +
+                '}';
     }
 }

@@ -2,6 +2,7 @@ package ru.gimadiew.voting.model;
 
 import org.hibernate.annotations.BatchSize;
 import org.springframework.util.CollectionUtils;
+import ru.gimadiew.voting.HasId;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -12,7 +13,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "USER", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "user_unique_email_idx")})
-public class User extends AbstractNamedEntity {
+public class User extends AbstractNamedEntity implements HasId {
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
@@ -105,5 +106,17 @@ public class User extends AbstractNamedEntity {
 
     public void setVotes(Collection<Vote> votes) {
         this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", enabled=" + enabled +
+                ", registered=" + registered +
+                ", roles=" + roles +
+                ", id=" + id +
+                '}';
     }
 }

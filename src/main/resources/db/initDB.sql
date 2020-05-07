@@ -53,6 +53,6 @@ CREATE TABLE VOTE
     user_id     INTEGER                 NOT NULL,
     rest_id     INTEGER                 NOT NULL,
     FOREIGN KEY (user_id) REFERENCES USER (id) ON DELETE CASCADE,
-    FOREIGN KEY (rest_id) REFERENCES RESTAURANT (id) ON DELETE CASCADE
+    FOREIGN KEY (rest_id) REFERENCES RESTAURANT (id)
 );
 CREATE UNIQUE INDEX vote_unique_user_date_idx ON VOTE (user_id, date_time);
