@@ -22,7 +22,7 @@ import static ru.gimadiew.voting.util.ValidationUtil.checkNotFoundWithId;
 import static ru.gimadiew.voting.web.SecurityUtil.authUserId;
 
 @RestController
-@RequestMapping(ProfileRestController.REST_URL)
+@RequestMapping(value = ProfileRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ProfileRestController extends AbstractUserController {
 
     static final String REST_URL = "/rest/profile";
@@ -32,7 +32,7 @@ public class ProfileRestController extends AbstractUserController {
     @Autowired
     VoteRepository voteRepository;
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public User get() {
         return super.get(authUserId());
     }
@@ -47,11 +47,6 @@ public class ProfileRestController extends AbstractUserController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody User user) {
         super.update(user, authUserId());
-    }
-
-    @GetMapping(value = "/text")
-    public String testUTF() {
-        return "Русский текст";
     }
 
     @GetMapping(value = "/votes")
