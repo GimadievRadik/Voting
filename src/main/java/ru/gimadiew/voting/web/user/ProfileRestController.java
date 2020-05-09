@@ -7,18 +7,17 @@ import org.springframework.http.MediaType;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import ru.gimadiew.voting.model.User;
-import ru.gimadiew.voting.model.Vote;
 import ru.gimadiew.voting.model.to.VoteTo;
 import ru.gimadiew.voting.repository.UserRepository;
 import ru.gimadiew.voting.repository.VoteRepository;
+import ru.gimadiew.voting.service.UserService;
+import ru.gimadiew.voting.service.VoteService;
 import ru.gimadiew.voting.util.VoteUtil;
 import ru.gimadiew.voting.web.SecurityUtil;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
-import static ru.gimadiew.voting.util.ValidationUtil.checkNotFoundWithId;
 import static ru.gimadiew.voting.web.SecurityUtil.authUserId;
 
 @RestController
@@ -28,9 +27,10 @@ public class ProfileRestController extends AbstractUserController {
     static final String REST_URL = "/rest/profile";
 
     @Autowired
-    UserRepository userRepository;
+    UserService userService;
+
     @Autowired
-    VoteRepository voteRepository;
+    VoteService voteService;
 
     @GetMapping
     public User get() {
@@ -51,11 +51,9 @@ public class ProfileRestController extends AbstractUserController {
 
     @GetMapping(value = "/votes")
     public List<VoteTo> getVotingHistory(@RequestParam @Nullable LocalDate date) {
-        LocalDateTime dateTime = date == null ? LocalDateTime.of(2000, 1, 1, 0, 0) : date.atStartOfDay();
         int id = SecurityUtil.authUserId();
-        checkNotFoundWithId(userRepository.findById(id).orElse(null), id);
-        log.info("getVotingHistory for user {}, date filter is {}", id, dateTime);
-        List<Vote> votes = voteRepository.getAfterByUserId(id, dateTime);
-        return VoteUtil.getTos(votes);
+        log.info("getVotingHistory for user {}, date filter is {}", id, date);
+        userService.get(id);
+        return VoteUtil.getTos(voteService.getVotingHistory(id, date));
     }
 }

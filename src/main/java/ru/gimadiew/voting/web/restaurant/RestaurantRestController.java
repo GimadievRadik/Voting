@@ -1,6 +1,5 @@
 package ru.gimadiew.voting.web.restaurant;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,26 +11,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.gimadiew.voting.model.Dish;
 import ru.gimadiew.voting.model.Restaurant;
-import ru.gimadiew.voting.model.User;
-import ru.gimadiew.voting.model.Vote;
 import ru.gimadiew.voting.model.to.RestaurantTo;
 import ru.gimadiew.voting.model.to.VoteTo;
-import ru.gimadiew.voting.repository.DishRepository;
-import ru.gimadiew.voting.repository.RestaurantRepository;
-import ru.gimadiew.voting.repository.UserRepository;
-import ru.gimadiew.voting.repository.VoteRepository;
-import ru.gimadiew.voting.util.RestaurantUtil;
-import ru.gimadiew.voting.util.VoteUtil;
-import ru.gimadiew.voting.util.exception.VotingException;
-import ru.gimadiew.voting.web.SecurityUtil;
+import ru.gimadiew.voting.service.DishService;
+import ru.gimadiew.voting.service.RestaurantService;
+import ru.gimadiew.voting.service.VoteService;
 
 import java.net.URI;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
-
-import static ru.gimadiew.voting.util.ValidationUtil.checkNotFoundWithId;
 
 @RestController
 @RequestMapping(value = RestaurantRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -40,93 +28,60 @@ public class RestaurantRestController {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    RestaurantRepository restaurantRepository;
+    RestaurantService restaurantService;
     @Autowired
-    DishRepository dishRepository;
+    DishService dishService;
     @Autowired
-    VoteRepository voteRepository;
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    ObjectMapper mapper;
+    VoteService voteService;
 
     @GetMapping("/{id}")
-    public Restaurant getDish(@PathVariable int id) {
+    public Restaurant get(@PathVariable int id) {
         log.info("get restaurant id = {}", id);
-        return checkNotFoundWithId(restaurantRepository.findById(id), id);
+        return restaurantService.get(id);
     }
 
     @GetMapping("/{id}/dishes")
     public List<Dish> getMenu(@PathVariable int id) {
         log.info("get menu for restaurant with id = {}", id);
-        return dishRepository.getMenu(id, LocalDate.now());
+        return dishService.getMenu(id, LocalDate.now());
     }
 
     @GetMapping("/{id}/with-menu")
     public Restaurant getWithMenu(@PathVariable int id) {
         log.info("get restaurant with menu, id = {}", id);
-        return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now()), id);
+        return restaurantService.getWithMenu(id);
     }
 
     @GetMapping("/{id}/dishes/history")
     public List<Dish> getDishesAfterDate(@PathVariable int id, @RequestParam @Nullable LocalDate date) {
-        LocalDate startDate = date == null ? LocalDate.of(2000, 1, 1) : date;
-        log.info("get menus history for restaurant id = {} from date {}", id, startDate);
-        return dishRepository.getMenu(id, startDate);
+        log.info("get menus history for restaurant id = {} from date {}", id, date);
+        return dishService.getDishesAfterDate(id, date);
     }
 
     @GetMapping
     public List<Restaurant> getAllWithMenu() {
         log.info("get all restaurants menu");
-        return restaurantRepository.findAllWithMenu(LocalDate.now());
+        return restaurantService.getAllWithMenu();
     }
 
     @GetMapping("/votes")
     public List<RestaurantTo> getRatings() {
         log.info("get restaurants rating");
-        List<Vote> todayVotes = voteRepository.getVotes(LocalDate.now().atStartOfDay());
-        List<Restaurant> restaurants = getAllWithMenu();
-        List<RestaurantTo> result = RestaurantUtil.getRestTos(restaurants, todayVotes);
-        result.sort(Comparator.comparing(RestaurantTo::getRating).reversed());
-        return result;
+        return restaurantService.getRatings();
     }
 
     @PostMapping("/{id}/votes")
     public ResponseEntity<VoteTo> addVote(@PathVariable int id) {
-        Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(id), id);
-        User user = userRepository.getOne(SecurityUtil.authUserId());
-        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now().atStartOfDay());
-        Vote saved = saveVote(prepareVotes(votes, restaurant, user));
-        VoteTo vTo = VoteUtil.asTo(saved);
+        VoteTo vTo = voteService.addVote(id);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/votes/{id}")
-                .buildAndExpand(saved.getId()).toUri();
+                .buildAndExpand(vTo.getId()).toUri();
         return ResponseEntity.created(uriOfNewResource).body(vTo);
     }
 
     @PutMapping(value = "/{id}/votes")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void updateVote(@PathVariable int id) {
-        Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(id), id);
-        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now().atStartOfDay());
-        saveVote(prepareVotes(votes, restaurant, userRepository.getOne(SecurityUtil.authUserId())));
-    }
-
-    private Vote prepareVotes(List<Vote> votes, Restaurant restaurant, User user) {
-        if (!votes.isEmpty() && LocalDateTime.now().isAfter(LocalDate.now().atStartOfDay().plusHours(11))) {
-            throw new VotingException("More than 11 hours, to late to change your vote");
-        }
-        Vote vote = votes.isEmpty() ? new Vote() : votes.get(0);
-        vote.setRestaurant(restaurant);
-        vote.setUser(user);
-        return vote;
-    }
-
-    private Vote saveVote(Vote vote) {
-        if (!vote.isNew()) {
-            vote.setVotingDateTime(LocalDateTime.now());
-        }
-        return voteRepository.save(vote);
+        voteService.updateVote(id);
     }
 }

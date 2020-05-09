@@ -1,6 +1,8 @@
 package ru.gimadiew.voting.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.util.CollectionUtils;
 import ru.gimadiew.voting.HasId;
 
