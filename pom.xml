@@ -18,6 +18,7 @@
 
         <!-- Spring -->
         <spring.version>5.2.5.RELEASE</spring.version>
+        <spring.security.version>5.3.1.RELEASE</spring.security.version>
         <spring-data-jpa.version>2.2.6.RELEASE</spring-data-jpa.version>
         <jackson-json.version>2.10.3</jackson-json.version>
         <tomcat.version>9.0.31</tomcat.version>
@@ -98,6 +99,18 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!--security-->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+
         <!--- ORM -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -108,11 +121,6 @@
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-jcache</artifactId>
-            <version>${hibernate.version}</version>
         </dependency>
         <!--http://hibernate.org/validator/documentation/getting-started/#unified-expression-language-el-->
         <dependency>

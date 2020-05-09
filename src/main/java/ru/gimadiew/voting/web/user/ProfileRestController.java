@@ -8,8 +8,6 @@ import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.*;
 import ru.gimadiew.voting.model.User;
 import ru.gimadiew.voting.model.to.VoteTo;
-import ru.gimadiew.voting.repository.UserRepository;
-import ru.gimadiew.voting.repository.VoteRepository;
 import ru.gimadiew.voting.service.UserService;
 import ru.gimadiew.voting.service.VoteService;
 import ru.gimadiew.voting.util.VoteUtil;
