@@ -36,7 +36,7 @@ public class RestaurantService {
     }
 
     public List<Restaurant> getAllWithMenu() {
-        return restaurantRepository.findAllWithMenu(LocalDate.now()); //TODO without date
+        return restaurantRepository.findAllWithMenu(LocalDate.now());
     }
 
     public List<RestaurantTo> getRatings() {

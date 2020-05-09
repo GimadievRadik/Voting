@@ -2,7 +2,6 @@ package ru.gimadiew.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.User;
 import ru.gimadiew.voting.model.Vote;
