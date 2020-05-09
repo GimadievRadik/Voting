@@ -1,6 +1,7 @@
 package ru.gimadiew.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.Vote;
@@ -31,10 +32,12 @@ public class RestaurantService {
         return checkNotFoundWithId(restaurantRepository.findById(id), id);
     }
 
+    @Cacheable("restaurants")
     public Restaurant getWithMenu(int id) {
         return checkNotFoundWithId(restaurantRepository.findWithMenu(id, LocalDate.now()), id);
     }
 
+    @Cacheable("restaurants")
     public List<Restaurant> getAllWithMenu() {
         return restaurantRepository.findAllWithMenu(LocalDate.now());
     }

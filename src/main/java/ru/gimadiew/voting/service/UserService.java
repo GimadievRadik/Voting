@@ -1,6 +1,8 @@
 package ru.gimadiew.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.gimadiew.voting.model.User;
@@ -18,6 +20,7 @@ public class UserService {
     @Autowired
     UserRepository repository;
 
+    @Cacheable("users")
     public List<User> getAll() {
         return repository.findAll(SORT_NAME_EMAIL);
     }
@@ -26,14 +29,17 @@ public class UserService {
         return checkNotFoundWithId(repository.findById(id).orElse(null), id);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public User create(User user) {
         return repository.save(user);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void delete(int id) {
         checkNotFoundWithId(repository.delete(id), id);
     }
 
+    @CacheEvict(value = "users", allEntries = true)
     public void update(User user) {
         repository.save(user);
     }
