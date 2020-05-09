@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 public class Vote extends AbstractBaseEntity {
 
     @Column(name = "date_time", nullable = false, columnDefinition = "timestamp default now()")
-//    @NotNull
     private LocalDateTime votingDateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)

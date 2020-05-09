@@ -1,6 +1,7 @@
 package ru.gimadiew.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import ru.gimadiew.voting.model.Restaurant;
@@ -53,6 +54,7 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public void update(int id, RestaurantTo restaurantTo) {
         assureIdConsistent(restaurantTo, id);
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(id), id);
@@ -60,6 +62,7 @@ public class RestaurantService {
         restaurantRepository.save(restaurant);
     }
 
+    @CacheEvict(value = "restaurants", allEntries = true)
     public void delete(int id) {
         restaurantRepository.deleteById(id);
     }

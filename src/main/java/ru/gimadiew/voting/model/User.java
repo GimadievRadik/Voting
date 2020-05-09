@@ -60,52 +60,8 @@ public class User extends AbstractNamedEntity implements HasId {
         setRoles(roles);
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
     public void setRoles(Collection<Role> roles) {
         this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Date getRegistered() {
-        return registered;
-    }
-
-    public void setRegistered(Date registered) {
-        this.registered = registered;
-    }
-
-    public Set<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(Collection<Vote> votes) {
-        this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
     }
 
     @Override

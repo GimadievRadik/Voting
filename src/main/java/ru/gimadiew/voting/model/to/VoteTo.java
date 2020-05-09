@@ -19,28 +19,4 @@ public class VoteTo extends BaseTo {
         this.restaurantId = restaurantId;
         this.restaurantName = restaurantName;
     }
-
-    public LocalDateTime getVotingDateTime() {
-        return votingDateTime;
-    }
-
-    public void setVotingDateTime(LocalDateTime votingDateTime) {
-        this.votingDateTime = votingDateTime;
-    }
-
-    public String getRestaurantName() {
-        return restaurantName;
-    }
-
-    public void setRestaurantName(String restaurantName) {
-        this.restaurantName = restaurantName;
-    }
-
-    public Integer getRestaurantId() {
-        return restaurantId;
-    }
-
-    public void setRestaurantId(Integer restaurantId) {
-        this.restaurantId = restaurantId;
-    }
 }

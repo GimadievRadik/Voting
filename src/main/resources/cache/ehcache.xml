@@ -20,9 +20,9 @@ http://www.ehcache.org/v3 ">
         <expiry>
             <none/>
         </expiry>
-        <heap>1</heap>
+        <heap>100</heap>
     </cache-template>
 
     <cache alias="restaurants" uses-template="singleNonExpiryCache"/>
-    <cache alias="users" uses-template="singleNonExpiryCache"/>
+    <cache alias="users" uses-template="expiryCache"/>
 </config>

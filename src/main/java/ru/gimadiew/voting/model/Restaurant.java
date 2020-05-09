@@ -37,22 +37,6 @@ public class Restaurant extends AbstractBaseEntity implements HasId {
         this.name = name;
     }
 
-    public Set<Dish> getMenu() {
-        return menu;
-    }
-
-    public void setMenu(Collection<Dish> dishes) {
-        this.menu = CollectionUtils.isEmpty(dishes) ? Collections.emptySet() : new HashSet<>(dishes);
-    }
-
-    public Set<Vote> getVotes() {
-        return votes;
-    }
-
-    public void setVotes(List<Vote> votes) {
-        this.votes = CollectionUtils.isEmpty(votes) ? Collections.emptySet() : new HashSet<>(votes);
-    }
-
     public String getName() {
         return name;
     }

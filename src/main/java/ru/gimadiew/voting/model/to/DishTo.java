@@ -30,15 +30,7 @@ public class DishTo extends BaseTo {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public Float getPrice() {
         return price;
-    }
-
-    public void setPrice(Float price) {
-        this.price = price;
     }
 }
