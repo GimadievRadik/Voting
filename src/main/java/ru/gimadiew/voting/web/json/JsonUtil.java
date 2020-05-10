@@ -9,7 +9,7 @@ import java.util.List;
 import static ru.gimadiew.voting.web.json.JacksonObjectMapper.getMapper;
 
 public class JsonUtil {
-
+// TODO delete or not ?
     public static <T> List<T> readValues(String json, Class<T> clazz) {
         ObjectReader reader = getMapper().readerFor(clazz);
         try {

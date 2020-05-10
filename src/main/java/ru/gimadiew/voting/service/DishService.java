@@ -3,6 +3,7 @@ package ru.gimadiew.voting.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.gimadiew.voting.model.Dish;
 import ru.gimadiew.voting.model.to.DishTo;
 import ru.gimadiew.voting.model.to.MenuTo;
@@ -23,7 +24,6 @@ public class DishService {
 
     @Autowired
     DishRepository dishRepository;
-
     @Autowired
     RestaurantRepository restaurantRepository;
 
@@ -36,6 +36,7 @@ public class DishService {
         return dishRepository.getMenu(restaurantId, startDate);
     }
 
+    @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
     public List<Dish> createDishes(MenuTo menuTo, int restaurantId) {
         return menuTo.getMenu().stream()
@@ -45,6 +46,7 @@ public class DishService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
     public void update(DishTo dishTo, int dishId, int restaurantId) {
         assureIdConsistent(dishTo, dishId);
@@ -53,6 +55,7 @@ public class DishService {
         saveDish(dish, restaurantId);
     }
 
+    @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
     public void delete(int restaurantId, int dishId) {
         dishRepository.deleteById(dishId, restaurantId);

@@ -2,6 +2,7 @@ package ru.gimadiew.voting.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.User;
 import ru.gimadiew.voting.model.Vote;
@@ -34,6 +35,7 @@ public class VoteService {
         return voteRepository.getAfterByUserId(id, dateTime);
     }
 
+    @Transactional
     public VoteTo addVote(int restaurantId) {
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(restaurantId), restaurantId);
         User user = userRepository.getOne(SecurityUtil.authUserId());
@@ -42,6 +44,7 @@ public class VoteService {
         return VoteUtil.asTo(saved);
     }
 
+    @Transactional
     public void updateVote(int restaurantId) {
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(restaurantId), restaurantId);
         List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now().atStartOfDay());

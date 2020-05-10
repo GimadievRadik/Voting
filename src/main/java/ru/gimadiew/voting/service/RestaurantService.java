@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.Vote;
 import ru.gimadiew.voting.model.to.RestaurantTo;
-import ru.gimadiew.voting.repository.DishRepository;
 import ru.gimadiew.voting.repository.RestaurantRepository;
 import ru.gimadiew.voting.repository.VoteRepository;
 import ru.gimadiew.voting.util.RestaurantUtil;
@@ -24,8 +24,6 @@ public class RestaurantService {
 
     @Autowired
     RestaurantRepository restaurantRepository;
-    @Autowired
-    DishRepository dishRepository;
     @Autowired
     VoteRepository voteRepository;
 
@@ -50,10 +48,12 @@ public class RestaurantService {
         return result;
     }
 
+    @Transactional
     public Restaurant save(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
     }
 
+    @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
     public void update(int id, RestaurantTo restaurantTo) {
         assureIdConsistent(restaurantTo, id);
@@ -62,12 +62,9 @@ public class RestaurantService {
         restaurantRepository.save(restaurant);
     }
 
+    @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
     public void delete(int id) {
         restaurantRepository.deleteById(id);
     }
-
-
-
-
 }

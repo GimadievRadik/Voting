@@ -18,7 +18,6 @@ public interface DishRepository extends JpaRepository<Dish, Integer> {
     List<Dish> getMenu(int id, LocalDate date);
 
     @Modifying
-    @Transactional
     @Query("DELETE FROM Dish d WHERE d.id = ?1 AND d.restaurant.id = ?2")
     void deleteById(int dishId, int restaurantId);
 

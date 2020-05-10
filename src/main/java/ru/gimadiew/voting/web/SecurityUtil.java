@@ -13,9 +13,4 @@ public class SecurityUtil {
     public static int authUserId() {
         return id;
     }
-
-    public static void setAuthUserId(int id) {
-        SecurityUtil.id = id;
-    }
-
 }
