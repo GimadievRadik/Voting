@@ -58,7 +58,7 @@ public class AdminRestController {
     public void updateDish(@PathVariable int restaurantId, @PathVariable int dishId, @Valid @RequestBody DishTo dishTo) {
         log.info("update dish, id = {}, restaurantId = {}", dishId, restaurantId);
         dishService.update(dishTo, dishId, restaurantId);
-    }
+    } // TODO restaurantId duplicate
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)

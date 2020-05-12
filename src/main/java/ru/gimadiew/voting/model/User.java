@@ -64,6 +64,22 @@ public class User extends AbstractNamedEntity implements HasId {
         this.roles = CollectionUtils.isEmpty(roles) ? EnumSet.noneOf(Role.class) : EnumSet.copyOf(roles);
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
