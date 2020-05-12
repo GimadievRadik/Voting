@@ -1,6 +1,7 @@
 ### This is a Java web-application with REST API - voting system for deciding where to have lunch.
 
-#### Overview
+Overview
+--------
 
 Readme contents API documentation and curl commands to get data for voting and vote.
  - 2 types of users: admin and regular users
@@ -21,68 +22,69 @@ Admin: `admin@gmail.com:admin`
 #### Responses
 Content-Type is application/json, charset UTF-8
 
-#### Commands
+Commands
+--------
 
-##### Get all restaurants with today's menu
+#### Get all restaurants with today's menu
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants --user user@yandex.ru:password`
 * Success Response: 200 OK.
 * Response content: restaurants array. Each object contains "id", "name" and "menu" - dishes array.
 * Dish contains "id", "description", "date" - string in ISO_LOCAL_DATE format and "price"(floating point number with 2 digits after decimal separator).
 
-##### Get restaurant by id 100006
+#### Get restaurant by id 100006
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants/100006 --user user@yandex.ru:password`
 * Path variables: restaurant's id
 * Success Response: 200 OK.
 * Response content: restaurant with "id" and "name".
 
-##### Get restaurant 100006 with menu
+#### Get restaurant 100006 with menu
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants/100006/with-menu --user user@yandex.ru:password`
 * Path variables: restaurant's id
 * Success Response: 200 OK.
 * Response content: restaurant with "menu" - dishes array.
 
-##### Get current 100006 restaurant's menu
+#### Get current 100006 restaurant's menu
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants/100006/dishes --user user@yandex.ru:password`
 * Path variables: restaurant's id
 * Success Response: 200 OK.
 * Response content: just restaurants menu.
 
-##### Get restaurants voting ratings
+#### Get restaurants voting ratings
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants/votes --user user@yandex.ru:password`
 * Success Response: 200 OK.
 * Response content: array of restaurants with votes count - "id", "name", "rating".
 
-##### Get current restaurant's dishes history after date (inclusive)
+#### Get current restaurant's dishes history after date (inclusive)
 `curl -X GET http://localhost:8080/voting/rest/user/restaurants/100004/dishes/history?date=2020-04-07 --user user@yandex.ru:password`
 * Request param: date string in ISO_LOCAL_DATE format
 * Path variables: restaurant's id
 * Success Response: 200 OK.
 * Response content: array of dishes
 
-##### Get user's voting history after date (inclusive)
+#### Get user's voting history after date (inclusive)
 `curl -X GET http://localhost:8080/voting/rest/user/votes?date=2020-04-06 --user user@yandex.ru:password`
 * Request param: date string in ISO_LOCAL_DATE format
 * Success Response: 200 OK.
 * Response content: array of votes - "id", voting date-time string, format 'yyyy-MM-dd HH:mm', restaurant name, restaurant id.
 
-##### Add vote 
+#### Add vote 
 `curl -X POST http://localhost:8080/voting/rest/user/restaurants/100006/votes --user user@yandex.ru:password`
 * Path variables: restaurant's id
 * Success Response: 201 Created.
 * Response content: Vote object.
 
-##### Change vote
+#### Change vote
 `curl -X PUT http://localhost:8080/voting/rest/user/restaurants/100006/votes --user user@yandex.ru:password`
 * Path variables: restaurant's id
 * Success Response: 204 No content.
 
-##### Create new restaurant "Pretty place"
+#### Create new restaurant "Pretty place"
 `curl -X POST http://localhost:8080/voting/rest/admin/restaurants?name=Pretty%20place --user admin@gmail.com:admin`
 * Request param: restaurant's name
 * Success Response: 201 Created.
 * Response content: "id" and restaurant's "name"
 
-##### Post menu to new restaurant
+#### Post menu to new restaurant
 `curl -X POST http://localhost:8080/voting/rest/admin/restaurants/100023/dishes --user admin@gmail.com:admin -H 'Content-Type: application/json' --data-raw '`
 ```json
 {
@@ -103,7 +105,7 @@ Content-Type is application/json, charset UTF-8
 * Success Response: 201 Created.
 * Response content: array of dishes
 
-##### Update dish
+#### Update dish
 `curl -X PUT http://localhost:8080/voting/rest/admin/restaurants/100023/dishes/100024 --user admin@gmail.com:admin -H 'Content-Type: application/json' --data-raw '`
 ```json
 {
@@ -115,17 +117,17 @@ Content-Type is application/json, charset UTF-8
 * Path variables: restaurant's id, dish's id
 * Success Response: 204 No content.
 
-##### Delete dish from menu
+#### Delete dish from menu
 `curl -X DELETE 'http://localhost:8080/voting/rest/admin/restaurants/100023/dishes/100024' --user admin@gmail.com:admin`
 * Path variables: restaurant's id, dish's id
 * Success Response: 204 No content.
 
-##### Delete restaurant
+#### Delete restaurant
 `curl -X DELETE 'http://localhost:8080/voting/rest/admin/restaurants/100023' --user admin@gmail.com:admin`
 * Path variables: restaurant's id
 * Success Response: 204 No content.
 
-##### Update restaurant's name
+#### Update restaurant's name
 `curl -X PATCH 'http://localhost:8080/voting/rest/admin/restaurants/100023?name=Chery%20Lady' --user admin@gmail.com:admin`
 * Request param: restaurant's name
 * Path variables: restaurant's id
