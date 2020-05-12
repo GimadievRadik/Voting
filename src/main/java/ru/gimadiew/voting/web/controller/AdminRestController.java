@@ -12,7 +12,6 @@ import ru.gimadiew.voting.model.Dish;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.to.DishTo;
 import ru.gimadiew.voting.model.to.MenuTo;
-import ru.gimadiew.voting.model.to.RestaurantTo;
 import ru.gimadiew.voting.service.DishService;
 import ru.gimadiew.voting.service.RestaurantService;
 
@@ -58,13 +57,13 @@ public class AdminRestController {
     public void updateDish(@PathVariable int restaurantId, @PathVariable int dishId, @Valid @RequestBody DishTo dishTo) {
         log.info("update dish, id = {}, restaurantId = {}", dishId, restaurantId);
         dishService.update(dishTo, dishId, restaurantId);
-    } // TODO restaurantId duplicate
+    }
 
-    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping("/{id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void updateRestaurant(@PathVariable int id, @Valid @RequestBody RestaurantTo restaurantTo) {
+    public void updateRestaurant(@PathVariable int id, @RequestParam String name) {
         log.info("update restaurant id = {}", id);
-        restaurantService.update(id, restaurantTo);
+        restaurantService.update(id, name);
     }
 
     @DeleteMapping("/{id}")

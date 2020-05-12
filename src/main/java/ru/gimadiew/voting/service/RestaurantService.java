@@ -5,6 +5,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import ru.gimadiew.voting.model.Restaurant;
 import ru.gimadiew.voting.model.Vote;
 import ru.gimadiew.voting.model.to.RestaurantTo;
@@ -16,7 +17,6 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 
-import static ru.gimadiew.voting.util.ValidationUtil.assureIdConsistent;
 import static ru.gimadiew.voting.util.ValidationUtil.checkNotFoundWithId;
 
 @Service
@@ -55,11 +55,10 @@ public class RestaurantService {
 
     @Transactional
     @CacheEvict(value = "restaurants", allEntries = true)
-    public void update(int id, RestaurantTo restaurantTo) {
-        assureIdConsistent(restaurantTo, id);
+    public void update(int id, String name) {
+        Assert.notNull(name, "name must not be null");
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(id), id);
-        restaurant.setName(restaurantTo.getName());
-        restaurantRepository.save(restaurant);
+        restaurant.setName(name);
     }
 
     @Transactional
