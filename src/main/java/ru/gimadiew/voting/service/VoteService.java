@@ -31,15 +31,15 @@ public class VoteService {
     UserRepository userRepository;
 
     public List<Vote> getVotingHistory(Integer id, LocalDate date) {
-        LocalDateTime dateTime = date == null ? LocalDateTime.of(2000, 1, 1, 0, 0) : date.atStartOfDay();
-        return voteRepository.getAfterByUserId(id, dateTime);
+        LocalDate votingDate = date == null ? LocalDate.of(2000, 1, 1) : date;
+        return voteRepository.getAfterByUserId(id, votingDate);
     }
 
     @Transactional
     public VoteTo addVote(int restaurantId) {
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(restaurantId), restaurantId);
         User user = userRepository.getOne(SecurityUtil.authUserId());
-        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now().atStartOfDay());
+        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now());
         Vote saved = saveVote(prepareVotes(votes, restaurant, user));
         return VoteUtil.asTo(saved);
     }
@@ -47,7 +47,7 @@ public class VoteService {
     @Transactional
     public void updateVote(int restaurantId) {
         Restaurant restaurant = checkNotFoundWithId(restaurantRepository.findById(restaurantId), restaurantId);
-        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now().atStartOfDay());
+        List<Vote> votes = voteRepository.getAfterByUserId(SecurityUtil.authUserId(), LocalDate.now());
         saveVote(prepareVotes(votes, restaurant, userRepository.getOne(SecurityUtil.authUserId())));
     }
 
@@ -63,7 +63,7 @@ public class VoteService {
 
     private Vote saveVote(Vote vote) {
         if (!vote.isNew()) {
-            vote.setVotingDateTime(LocalDateTime.now());
+            vote.setVotingDate(LocalDate.now());
         }
         return voteRepository.save(vote);
     }

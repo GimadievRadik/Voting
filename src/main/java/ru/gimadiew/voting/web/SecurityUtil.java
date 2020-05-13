@@ -2,10 +2,8 @@ package ru.gimadiew.voting.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import ru.gimadiew.voting.AuthorizedUser;
 import ru.gimadiew.voting.model.AbstractBaseEntity;
-import ru.gimadiew.voting.model.User;
 
 import static java.util.Objects.requireNonNull;
 

@@ -4,7 +4,6 @@ import org.springframework.data.domain.Persistable;
 import org.springframework.util.Assert;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)

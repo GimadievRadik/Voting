@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class VoteUtil {
 
     public static VoteTo asTo(Vote v) {
-        return new VoteTo(v.getId(), v.getRestaurant().getId(), v.getRestaurant().getName(), v.getVotingDateTime());
+        return new VoteTo(v.getId(), v.getRestaurant().getId(), v.getRestaurant().getName(), v.getVotingDate());
     }
 
     public static List<VoteTo> getTos(List<Vote> votes) {

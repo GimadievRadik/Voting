@@ -13,7 +13,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "USER", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "user_unique_email_idx")})
-public class User extends AbstractNamedEntity implements HasId {
+public class User extends AbstractBaseEntity implements HasId {
 
     @Column(name = "email", nullable = false, unique = true)
     @Email
@@ -41,18 +41,18 @@ public class User extends AbstractNamedEntity implements HasId {
     private Set<Role> roles;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @OrderBy("votingDateTime DESC")
+    @OrderBy("votingDate DESC")
     private Set<Vote> votes;
 
     public User() {
     }
 
     public User(Integer id, String name, String email, String password, Role role, Role... roles) {
-        this(id, name, email, password, true, new Date(), EnumSet.of(role, roles));
+        this(id, email, password, true, new Date(), EnumSet.of(role, roles));
     }
 
-    public User(Integer id, String name, String email, String password, boolean enabled, Date registered, Collection<Role> roles) {
-        super(id, name);
+    public User(Integer id, String email, String password, boolean enabled, Date registered, Collection<Role> roles) {
+        super(id);
         this.email = email;
         this.password = password;
         this.enabled = enabled;

@@ -42,7 +42,7 @@ public class RestaurantService {
     }
 
     public List<RestaurantTo> getRatings() {
-        List<Vote> todayVotes = voteRepository.getVotes(LocalDate.now().atStartOfDay());
+        List<Vote> todayVotes = voteRepository.getVotes(LocalDate.now());
         List<RestaurantTo> result = RestaurantUtil.getRestTos(getAllWithMenu(), todayVotes);
         result.sort(Comparator.comparing(RestaurantTo::getRating).reversed());
         return result;
