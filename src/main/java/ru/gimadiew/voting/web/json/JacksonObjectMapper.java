@@ -10,7 +10,6 @@ import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 import static ru.gimadiew.voting.util.DateTimeUtil.DATE_TIME_PATTERN;
 
